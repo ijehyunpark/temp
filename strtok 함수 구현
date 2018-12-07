@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <string.h>
+
+char * strtok(char *str1, const char *str2){
+	//전역변수로 last의 값은 함수가 끝나도 사라지지 않 음 
+    static char *last = '\0';
+    char *temp;
+    
+    //분류가 끝나면 NULL값을 리턴한다 
+    if ( str1 == '\0' ) {
+        str1 = last;
+        if (str1 == '\0') return '\0'; 
+	} 
+	else str1 += strspn(str1, str2);
+	
+	 //분류할 문자와 그 이후의 문자열을 가리킨다. 
+    temp = strpbrk(str1, str2);
+    
+    //분류
+    if (temp) {
+        *temp = '\0';
+        last = temp + 1;
+    }
+	else last = '\0';
+	
+    return str1;
+}
+
+int main(int argc, char *argv[]) {
+	char str[]="1589392968728976.3i5u2985/42379928.428792;";
+	char *delim="./;";
+	char *ptr=strtok(str,delim);
+	while(ptr !='\0'){
+		printf("%s\n",ptr);
+		ptr	=strtok('\0',"./;");
+	}
+	return 0;
+}
