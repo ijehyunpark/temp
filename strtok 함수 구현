@@ -2,7 +2,7 @@
 #include <string.h>
 
 char * strtok(char *str1, const char *str2){
-	//전역변수로 last의 값은 함수가 끝나도 사라지지 않 음 
+	//전역변수로 last의 값은 함수가 끝나도 사라지지 않음 
     static char *last = '\0';
     char *temp;
     
@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 	char *ptr=strtok(str,delim);
 	while(ptr !='\0'){
 		printf("%s\n",ptr);
-		ptr	=strtok('\0',"./;");
+		ptr =strtok('\0',"./;");
 	}
 	return 0;
 }
