@@ -2,7 +2,7 @@
 #include <string.h>
 
 char * strtok(char *str1, const char *str2){
-	//전역변수로 last의 값은 함수가 끝나도 사라지지 않음 
+	//정적변수로 last의 값은 함수가 끝나도 사라지지 않음 
     static char *last = '\0';
     char *temp;
     
